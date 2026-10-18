@@ -1,2 +1,2 @@
 # Phone-Directory-FullStack
-It is  a fullStack project with CRUD operations.
+To Store the contact details using the CRUD operations.
