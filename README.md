@@ -1,2 +1,12 @@
 # Phone-Directory-FullStack
-To Store the contact details using the CRUD operations.
+
+A full-stack project for storing contact details using CRUD operations.
+
+## Project Setup
+
+### Backend
+- Installed Node.js packages, including Express, cors, and Mongoose.
+
+### Frontend
+- Created React app with Vite.
+- Tailwind CSS installed.
