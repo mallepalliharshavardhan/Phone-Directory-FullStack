@@ -1,13 +1,18 @@
 import { useState } from "react";
 
-const Contactform = ({ onSubmit }) => {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
+const Contactform = ({ onSubmit,existing }) => {
+  const [name, setName] = useState(existing?.name ?? "");
+  const [phone, setPhone] = useState(existing?.phone ?? "");
+  const [email, setEmail] = useState(existing?.email ?? "");
 
-  const handleAdd = (e) => {
+  const handleAdd = async (e) => {
     e.preventDefault();
-    onSubmit({ name, phone, email });
+    await onSubmit({ name, phone, email });
+    if (!existing) {
+      setName("");
+      setPhone("");
+      setEmail("");
+    }
   }
 
   return (
@@ -17,7 +22,7 @@ const Contactform = ({ onSubmit }) => {
       </h2>
       <form className="flex flex-col gap-4" onSubmit={handleAdd}>
         <input
-          className="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-800 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+          className="w-full rounded-lg border border-slate-300 px-4 py-1 text-slate-800 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
           type="text"
           placeholder="Enter name"
           required
@@ -25,7 +30,7 @@ const Contactform = ({ onSubmit }) => {
           value={name}
         />
         <input
-          className="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-800 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+          className="w-full rounded-lg border border-slate-300 px-4 py-1 text-slate-800 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
           type="text"
           placeholder="Enter phone"
           required
@@ -33,7 +38,7 @@ const Contactform = ({ onSubmit }) => {
           value={phone}
         />
         <input
-          className="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-800 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+          className="w-full rounded-lg border border-slate-300 px-4 py-1 text-slate-800 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
           type="email"
           placeholder="Enter email"
           required
@@ -44,7 +49,7 @@ const Contactform = ({ onSubmit }) => {
           className=" hover:bg-blue-300 rounded-lg bg-blue-600 px-4 py-3 font-medium text-white transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2"
           type="submit"
         >
-          Add contact
+          {existing ? "Update contact" : "Add contact"}
         </button>
       </form>
     </section>
