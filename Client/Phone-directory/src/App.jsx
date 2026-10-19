@@ -15,7 +15,11 @@ function App() {
 
   return (
     <>
-       <Contactform onSubmit={addNewcontact}/>
+      <div className="flex min-h-screen justify-center bg-slate-200 px-4 py-10">
+        <main className="w-full max-w-md">
+          <Contactform onSubmit={addNewcontact} />
+        </main>
+      </div>
     </>
   )
 }
