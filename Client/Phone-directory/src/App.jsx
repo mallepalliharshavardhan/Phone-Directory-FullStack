@@ -3,6 +3,7 @@ import ContactList from './ContactList'
 import API from './api'
 import { useState,useEffect } from 'react'
 import './App.css'
+import backgroundImage from './assets/backgroundImage.jpg'
 
 function App() {
 
@@ -50,7 +51,8 @@ console.log(contacts)
 
   return (
     <>
-      <div className="flex min-h-screen justify-center bg-slate-200 px-4 py-10">
+      <div className="flex min-h-screen justify-center   px-4 py-10 bg-center bg-no-repeat " 
+      style={{backgroundImage: `url(${backgroundImage})`}}>
         <main className="w-full max-w-lg">
           <Contactform key={editContact?._id ?? "new"} onSubmit={saveContact} existing={editContact}/>
           <ContactList contacts={contacts} onDelete={deleteContact} onEdit={setEditcontact}/>
